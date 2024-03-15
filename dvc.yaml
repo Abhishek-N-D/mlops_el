@@ -1,0 +1,22 @@
+stages:
+ preprocess:
+    cmd: python preprocess.py
+    deps:
+      - preprocess.py
+    outs:
+      - preprocessed_data.npy
+ train:
+    cmd: python train.py
+    deps:
+      - train.py
+      - preprocessed_data.npy
+    outs:
+      - trained_model.h5
+ evaluate:
+    cmd: python evaluate.py
+    deps:
+      - evaluate.py
+      - trained_model.h5
+      - preprocessed_data.npy
+    outs:
+      - metrics.txt

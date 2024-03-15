@@ -1,0 +1,50 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python preprocess.py
+    deps:
+    - path: preprocess.py
+      hash: md5
+      md5: 3f5bb302be0df249aa7a471aed02fbb0
+      size: 786
+    outs:
+    - path: preprocessed_data.npy
+      hash: md5
+      md5: a3296fa04e22c86b510133ceb6976362
+      size: 1720390598
+  train:
+    cmd: python train.py
+    deps:
+    - path: preprocessed_data.npy
+      hash: md5
+      md5: a3296fa04e22c86b510133ceb6976362
+      size: 1720390598
+    - path: train.py
+      hash: md5
+      md5: d12ec9cc650d4c3ffa4f8e6bdc970db4
+      size: 1344
+    outs:
+    - path: trained_model.h5
+      hash: md5
+      md5: 54b2a481771eae09e5269bafcd63fc22
+      size: 49334784
+  evaluate:
+    cmd: python evaluate.py
+    deps:
+    - path: evaluate.py
+      hash: md5
+      md5: 8d029c1c014cafb49280e1a9aff93f1d
+      size: 810
+    - path: preprocessed_data.npy
+      hash: md5
+      md5: a3296fa04e22c86b510133ceb6976362
+      size: 1720390598
+    - path: trained_model.h5
+      hash: md5
+      md5: 54b2a481771eae09e5269bafcd63fc22
+      size: 49334784
+    outs:
+    - path: metrics.txt
+      hash: md5
+      md5: 19650213ddf6fe1aa4cf7a23ae3a9632
+      size: 54
