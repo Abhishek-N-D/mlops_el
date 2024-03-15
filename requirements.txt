@@ -35,7 +35,6 @@ cloudpickle==2.2.1
 colorama==0.4.6
 comm==0.2.2
 configobj==5.0.8
-contourpy==1.2.0
 cryptography==42.0.5
 cycler==0.12.1
 decorator==5.1.1
